@@ -1,0 +1,15 @@
+20230605
+
+시작시
+npm start
+
+1. jsx에서는 class 명을 부여할 때 class가 아닌
+className으로 클래스명을 부여한다.
+2. jsx에서는 변수 넣을 때는 {}로 삽입 - 데이터바인딩
+3. 인라인으로 style을 삽입 할 때는 {{fontSize:""}} 이런식
+
+
+state
+
+자료를 잠깐 저장할 때는 state를 써도 된다.
+state는 자동으로 html이 재랜더링이 된다.
