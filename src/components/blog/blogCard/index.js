@@ -1,9 +1,9 @@
 import React from "react";
 import Styled from "./styled";
 
-function BlogCard({ title, good, propGood }) {
+function BlogCard({ title, good, propGood, subKey }) {
   const plus = () => {
-    propGood((good += 1));
+    propGood((good += 1), subKey);
   };
   return (
     <Styled className="card">
