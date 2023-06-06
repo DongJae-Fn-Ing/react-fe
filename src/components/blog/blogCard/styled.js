@@ -20,6 +20,11 @@ const Styled = styled.li`
     }
   }
 
+  .detail {
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
   &:not(:last-child) {
     margin-bottom: 15px;
   }
