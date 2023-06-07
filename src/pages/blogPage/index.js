@@ -25,14 +25,12 @@ function BlogPage() {
   const [text, setText] = useState("");
 
   const nameChange = (data) => {
-    /*     console.log(data); */
     let nameCopy = [...title];
     nameCopy[data] = "마스터!";
     setTitle(nameCopy);
   };
 
   const propGood = (data, i) => {
-    /*     console.log(data, i); */
     let goodCopy = [...good];
     goodCopy[i] = data;
     setGood(goodCopy);

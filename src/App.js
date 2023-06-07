@@ -1,10 +1,12 @@
 import React from "react";
-import BlogPage from "./pages/blogPage";
+import BlogPage from "./pages/blogPage"; 
+/* import ShopPage from "./pages/shopPage"; */
 
 function App() {
   return (
     <div className="App">
-      <BlogPage />
+      <BlogPage /> 
+{/*       <ShopPage /> */}
     </div>
   );
 }
