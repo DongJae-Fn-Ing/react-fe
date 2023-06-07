@@ -20,9 +20,24 @@ const Styled = styled.li`
     }
   }
 
+  .date-area {
+    display: flex;
+    margin-bottom: 10px;
+
+    .date-title {
+      margin-right: 5px;
+      color: #000;
+      font-weight: bold;
+    }
+  }
+
   .detail {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
+
+    & + button {
+      margin-left: 5px;
+    }
   }
 
   &:not(:last-child) {

@@ -1,9 +1,20 @@
 import React from "react";
+import Button from "../../common/button/button";
+
 import Styled from "./styled";
 
-function BlogModal({ modalState, modalClose, modalTitle }) {
+function BlogModal({
+  modalState,
+  modalClose,
+  modalTitle,
+  keyData,
+  modalNameChange,
+}) {
   const close = () => {
     modalClose(!modalState);
+  };
+  const change = () => {
+    modalNameChange(keyData);
   };
 
   return (
@@ -19,6 +30,9 @@ function BlogModal({ modalState, modalClose, modalTitle }) {
         <div className="modal-con">
           <p>모달 텍스트</p>
           <p>상세내용</p>
+          <Button className="gray" type="button" onClick={change}>
+            모달에서 제목 바꾸기
+          </Button>
         </div>
       </div>
     </Styled>
