@@ -219,7 +219,7 @@ table {
 
   /* 스크롤 커스텀 */
   .scroll-active::-webkit-scrollbar { width: 6px; } 
-  .scroll-active::-webkit-scrollbar-thumb { background-color: #ddd; width: 10px; height: 80px; border-radius: 10px; } 
+  .scroll-active::-webkit-scrollbar-thumb { background-color: darkgray; width: 10px; height: 80px; border-radius: 10px; } 
   .scroll-active::-webkit-scrollbar-track { background-color: #fff; border: 1px solid #e1e1e1; display: none; } 
 
 

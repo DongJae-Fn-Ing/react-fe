@@ -9,6 +9,23 @@ const DivStyled = styled.div`
 
   .content {
     padding: 0 20px;
+
+    .blog-list {
+      overflow-y: auto;
+      max-height: 642px;
+    }
+
+    .list-add {
+      margin: 20px 0;
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        margin: 0 10px;
+      }
+    }
   }
 `;
 
