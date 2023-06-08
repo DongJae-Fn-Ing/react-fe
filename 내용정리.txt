@@ -65,3 +65,30 @@ function Modal(props){
 }
 
 state는 state를 사용하는 컴포넌트 중 최고 부모에 만들어놓아야한다.
+
+
+
+20230608
+보통 리액트 사이트 배포전에 전부 압축하지만
+수백장에 이미지
+public 폴더 안에 있던 곳은 그냥/ 이미지경로에 넣으면된다.
+문제는 서브 경로에 이미지를 넣어야할 때
+/ 서브폴더/이미지
+
+
+하지만 권장되는 방식은 이렇게입니다. 
+왜냐면 리액트로 만든 html 페이지를 배포할 때
+codingapple.com 경로에 배포하면 아무런 문제가 없지만
+codingapple.com/어쩌구/ 경로에 배포하면
+/logo192.png 이렇게 쓰면 파일을 찾을 수 없다고 나올 수도 있습니다. 
+그래서 /어쩌구/ 를 뜻하는 process.env.PUBLIC_URL 이것도 더해주면 된다고 하는군요. 
+
+
+codingapple.com/어쩌구/ 경로에 리액트로 만든 페이지를 배포할 일이 아예 없으면 굳이 안해도 됩니다. 
+
+
+<img src={process.env.PUBLIC_URL + '/logo192.png'} />
+
+process.env.PUBLIC_URL  << 내사이트의 경로를 뜻하고
+
+

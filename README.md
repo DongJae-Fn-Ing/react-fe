@@ -55,3 +55,11 @@ todoList 만들기
   16.class형 함수 학습
 
   17.shop 폴더셋팅
+
+- 2023.06.08
+
+  18.export default, import 학습
+
+  19.이미지 셋팅법 학습
+
+  20.퍼블릭 폴더 학습, process.env.PUBLIC_URL 복습 요망
