@@ -6,6 +6,7 @@ const Styled = styled.li`
   padding: 15px;
   border: 1px solid #000;
   border-radius: 3px;
+  cursor: pointer;
 
   figure {
     img {
@@ -17,7 +18,7 @@ const Styled = styled.li`
       .product-title {
         margin-bottom: 15px;
       }
-      p{
+      p {
         margin-bottom: 5px;
       }
     }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Styled from "./styled";
 
 import BlogHeader from "../../components/blog/blogHeader";
 import BlogCard from "../../components/blog/blogCard";
@@ -7,6 +6,7 @@ import BtnArea from "../../components/common/btnArea";
 import Button from "../../components/common/button/button";
 import Input from "../../components/common/input/input";
 import Modal from "../../components/blog/blogModal";
+import Styled from "./styled";
 
 function BlogPage() {
   let post = "블로그";
