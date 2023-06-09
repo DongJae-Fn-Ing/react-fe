@@ -92,3 +92,54 @@ codingapple.com/어쩌구/ 경로에 리액트로 만든 페이지를 배포할 
 process.env.PUBLIC_URL  << 내사이트의 경로를 뜻하고
 
 
+20230609
+라우트 
+react-router-dom 패키지 파일 설치하고
+index.js 처럼 셋팅
+
+
+  let navigate = useNavigate();
+  /* 페이지 이동 */
+  /* 보통 함수를 담아서 사용 */
+  Link 태그가 아닌 일반 onClick 이벤트에 달아서 라우팅 진행
+
+
+  nasted router
+  <Route path="/ShopPage" element={<ShopPage />}>
+    <Route path="/shopPageDetail" element={<ShopPageDetail />} />
+    {/* nasted router 
+    /ShopPage/shopPageDetail
+    */}
+  </Route>
+
+ 이러면  ShopPage 이컴포넌트 밑에 ShopPageDetail 이걸 보여줌
+ 둘다 한 화면에 보여줌
+
+
+  nasted router 이거 왜필요할까
+  여러 페이지를 만들때
+  여러 유사한 페이지를 만들때
+
+
+
+  url 파라미터
+
+  상세 페이지를 수십만개를 만들어야 하는데 하나하나 사이트를 만들 수 없음
+  그래서 url 파라미터를 쓴다.
+
+            <Route
+            path="/ShopPage/shopPageDetail/:id"
+            /ShopPage/shopPageDetail/:id<<< 아무거나
+            element={<ShopPageDetail shopData={shopData} />}
+          >
+
+          :id 이런식으로
+
+
+          import { useParams } from 'react-router-dom'
+
+          let 변수명 = useParams();
+          이런식으로 식으로 쓰면 파라미터url을 쓸 수 있다 
+
+
+                      /ShopPage/shopPageDetail/:id/:작명은 자유롭게 제한없이 여러개 사용가능

@@ -26,6 +26,12 @@ const Styled = styled.div`
       font-size: 20px;
       font-weight: bold;
     }
+
+    button {
+      & + button {
+        margin-left: 10px;
+      }
+    }
   }
 `;
 

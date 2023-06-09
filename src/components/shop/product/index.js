@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Styled from "./styled";
 
-function Product({ img, title, content, price }) {
+function Product({ img, title, content, price, subKey }) {
+  let detailPageGo = useNavigate();
+
   return (
-    <Styled>
+    <Styled
+      onClick={() => {
+        detailPageGo("/ShopPage/shopPageDetail/" + [subKey]);
+      }}
+    >
       <figure>
         <img src={img} alt={title} className="product-img" />
         <figcaption>
