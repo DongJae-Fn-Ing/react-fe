@@ -2,6 +2,7 @@ import React from "react";
 import Main from "./pages/main";
 import BlogPage from "./pages/blogPage";
 import ShopPage from "./pages/shopPage";
+import ShopPageDetail from "./pages/shopPageDetail";
 import { Routes, Route, Link } from "react-router-dom";
 import Styled from "./styled";
 
@@ -19,12 +20,16 @@ function App() {
           <li>
             <Link to="/ShopPage">쇼핑몰</Link>
           </li>
+          <li>
+            <Link to="/shopPageDetail">쇼핑몰 상세</Link>
+          </li>
         </ul>
 
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/BlogPage" element={<BlogPage />} />
           <Route path="/ShopPage" element={<ShopPage />} />
+          <Route path="/shopPageDetail" element={<ShopPageDetail />} />
           {/* 이친구는 페이지 */}
         </Routes>
       </Styled>
