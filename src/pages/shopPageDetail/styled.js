@@ -3,6 +3,11 @@ import styled from "@emotion/styled";
 const Styled = styled.div`
   padding: 40px;
 
+  .alert-box {
+    height: 30px;
+    background-color: blueviolet;
+  }
+
   .deatil-img {
     margin: 20px auto;
     max-width: 1000px;

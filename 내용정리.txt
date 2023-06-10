@@ -143,3 +143,77 @@ index.js 처럼 셋팅
 
 
                       /ShopPage/shopPageDetail/:id/:작명은 자유롭게 제한없이 여러개 사용가능
+
+
+
+lifeCycle hook 
+라이프 사이클
+컴포넌트 사람 처럼 살고 죽는다.
+
+컴포넌트가 보이는 순간 mount된다.
+가끔 state가 조작이 된다? update가 된다.
+필요 없으면 제거가 된다. unmount
+
+이거를 왜 배워?
+중간중간 간섭이 가능 즉 중간 중간 코드 실행이 가능
+
+
+    useEffect가 있는 함수는 그 컴포넌트가 장착(마운트)가 되거나
+    업데이트가 될 때 useEffect 안에 있는 것들이 작동한다.
+    
+    useEffect 안에 있는 코드는 그냥 두번 도는 게 정상임 페이지 발행하면 정상작동함
+
+    useEffect 쓰는 이유
+    useEffect 실행 시점이 다르다
+    useEffect 안에 있는 코드는 html들이 랜더링이 되고 실행이 된다.
+    html이 먼저 보여주면 속도가 빨라짐
+
+   useEffect 안에 쓰는 코드들 종류
+   어려운 연산
+   서버에서 데이터 가져오는 작업 ajax axios
+   타이머들
+
+   왜 이름이 useEffect라는 이름을 붙였을까
+   사이드 이펙트 함수 핵심과 관련는 부가 기능
+   useEffect에 들어가는 []는 디팬더시
+   디팬더시에는 스테이트나 변수를 넣을 수 있는데
+   디펜더시를 넣으면 디팬더시 안에 있는 state나 변수가 변하면 작동을 한다,
+   디팬더시를 비워 놓고 [] 넣은 상태로 두면 useEffect가 장착 즉 mount에만 실행이 된다.
+
+   useEffect(()=>{
+
+   안에 아래처럼 리턴문을 작성을 할 수 있는데 리턴 안에 있는 코드는 useEffect가 동작 전에 작동한다.
+
+     return ()=>{
+      보통 타이머를 작성하면 재랜더링 될 때 마다 타이머 갯수가 계속 추가가 되는데 초기화를 처리해주는 것이 좋다.
+      ajax 통신 같은 것도...
+      여기 사용하는 것을 clean up function
+
+      참고로 clean up function은 mount시 실행이 안됨 unmount시 실행이 됨
+    }
+
+   },[])
+
+
+
+   그냥 쉽게 외우기 정리 
+   
+   1.재랜더링 때마다 코드를 실행하고 싶으면 useEffect(()=>{})
+   2. mount시 한번만 실행을 하고 싶으면 useEffect(()=>{},[])
+   3. 삭제 될 때 한번 useEffect(()=>{
+    return ()=>{
+       unmount시 삭제
+    }
+   },[])
+   4. 실행 전에  사용하고 싶으면
+   useEffect(()=>{
+    return ()=>{
+      여기에
+    }
+   },[])
+   5 디팬더시에 변수나 state를 넣으면 넣은 state나 변수가 변경시에만 실행함
+   useEffect(()=>{
+    return ()=>{
+
+    }
+   },[여기 넣으면 ])
