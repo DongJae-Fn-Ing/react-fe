@@ -8,11 +8,28 @@ const Styled = styled.div`
     background-size: cover;
   }
 
-  .product-list {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
+  .state-wrap {
+    position: relative;
+    .product-list {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .loading {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: 40px;
+      background-color: #fff;
+      top: 0;
+      left: 0;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s;
+    }
   }
 `;
 
