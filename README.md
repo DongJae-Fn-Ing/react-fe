@@ -87,3 +87,5 @@ todoList 만들기
 - 2023.06.13
 
   27.Context API 및 애니메이션
+
+  28.Redux 셋팅 완료
