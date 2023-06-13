@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Outlet, useParams } from "react-router-dom";
 import Button from "../../components/common/button/button";
 import Styled from "./styled";
+import Data from "./data";
 
 function ShopPageDetail({ shopData }) {
   const [alertState, SetAlertState] = useState(true);
+  const [tabState, setTabState] = useState(0);
 
   let goPage = useNavigate();
   let { id } = useParams();
@@ -26,10 +28,23 @@ function ShopPageDetail({ shopData }) {
     };
   }, [alertState]);
 
-  /* 숙제   <input> 하나 만들고 거기에 유저가 숫자 말고 다른걸 입력하면
-"그러지마세요"라는 안내메세지를 출력해봅시다.
-굳이 그럴 필요는 없겠지만 오늘 배운 useEffect 써보는게 어떨까요.
-(팁) 모르는건 검색해봐야합니다. */
+  /* 탭 */
+  const tabChange = (data, key) => {
+    setTabState(key);
+  };
+
+  function TabCon({ tabState }) {
+    /* if문으로 탭짜기 */
+    if (tabState === 0) {
+      return <div>탭콘텐츠1</div>;
+    } else if (tabState === 1) {
+      return <div>탭콘텐츠2</div>;
+    } else if (tabState === 2) {
+      return <div>탭콘텐츠3</div>;
+    } else if (tabState === 3) {
+      return <div>탭콘텐츠4</div>;
+    }
+  }
 
   return (
     <Styled className="content">
@@ -80,8 +95,24 @@ function ShopPageDetail({ shopData }) {
           이벤트2
         </Button>
       </div>
-
       <Outlet></Outlet>
+      <div className="detail-tab">
+        <ul className="detail-tab-header">
+          {Data.map((data, key) => {
+            return (
+              <li className="tab-name" key={key}>
+                <button
+                  type="button"
+                  onClick={(key) => tabChange(data, data.id)}
+                >
+                  {data.tabName}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <TabCon tabState={tabState} />
+      </div>
     </Styled>
   );
 }
