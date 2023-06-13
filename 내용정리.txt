@@ -241,3 +241,40 @@ Promise.all( [axios.get('URL1'), axios.get('URL2')] )
 생 자바스크립트에서 통신법 fetch
 fetch('URL').then(결과 => 결과.json()).then((결과) => { console.log(결과) } ) JSON -> object/array 변환작업
 이런식으로 json 변환 작업이 필요함
+
+
+
+        /* 전환 애니메이션 만들기 */
+        /* 1.애니메이션 동작 전 className 만들기 */
+        /* 2.애니메이션 동작 후 className 만들기 */
+        /* 3. className에 transition 속성 추기 */
+        /* 4. 원할 때 2번 className 추가 */
+
+
+    /* useEffect 애니메이션을 적용할 때 이런식으로 타이머를 줘야한다 */
+    /* 리액트의 automatic batching 기능 */
+    /* 스테이트 변경 함수를 쓸 때마다 재랜더링을 해주는 게 아니라 변경이 전부 되고 나서 마지막에 재랜더링을 해줘야 한다.
+    즉 미세한 시간차를 주면 애니메이션이 가능 
+    */
+    
+
+
+    Single Page Application 문제는 state 값 공유가 힘들다.
+    
+    컴포넌트 간 state 공유 어려움
+    부모에서 자식 공유는 가능함
+    그래서 보통은 중첩 프롭스 계속해서 사용해야 하는데
+    그것이 싫다면
+
+    1.Context API(리액트 기본 문법)
+    2.Redux등을 사용가능
+
+
+1.Context API
+
+단점 
+1. state 변경시 쓸데없는 컴포넌트까지 전부 재렌더링이 되고 
+2. useContext() 를 쓰고 있는 컴포넌트는 나중에 다른 파일에서 재사용할 때 Context를 import 하는게 귀찮아질 수 있습니다.
+그래서 이것 보다는 redux 같은 외부라이브러리를 많이들 사용합니다.
+걍 이거 쓰지마
+    
