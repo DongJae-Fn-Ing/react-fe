@@ -278,3 +278,12 @@ fetch('URL').then(결과 => 결과.json()).then((결과) => { console.log(결과
 그래서 이것 보다는 redux 같은 외부라이브러리를 많이들 사용합니다.
 걍 이거 쓰지마
     
+
+
+
+2.Redux
+컴포넌트들이 props 없이 값을 공유 가능
+
+Redux를 쓰는 이유
+Redux라는 공간에 state들을 저장하여
+모든 컴포넌트에서 쓸 수 있게 한다.
