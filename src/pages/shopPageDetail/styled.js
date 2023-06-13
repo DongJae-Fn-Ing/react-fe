@@ -38,6 +38,10 @@ const Styled = styled.div`
       }
     }
   }
+
+  .detail-tab {
+    margin-top: 20px;
+  }
 `;
 
 export default Styled;

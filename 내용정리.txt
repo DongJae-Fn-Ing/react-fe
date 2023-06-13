@@ -145,7 +145,7 @@ index.js 처럼 셋팅
                       /ShopPage/shopPageDetail/:id/:작명은 자유롭게 제한없이 여러개 사용가능
 
 
-
+20230610
 lifeCycle hook 
 라이프 사이클
 컴포넌트 사람 처럼 살고 죽는다.
@@ -217,3 +217,27 @@ lifeCycle hook
 
     }
    },[여기 넣으면 ])
+
+
+20230611
+
+서버: 부탁하면 진짜로 들어주는 프로그램
+
+서버통신
+
+1.방법(get,post) 정하고
+2.어떤자료(url) 적어 보내라
+
+axios 사용해라
+
+axios post 서버로 데이터 보내는 법
+axios.post('URL', {name : 'kim'})
+
+동시에 ajax get 처리하는 법
+
+Promise.all( [axios.get('URL1'), axios.get('URL2')] )
+
+
+생 자바스크립트에서 통신법 fetch
+fetch('URL').then(결과 => 결과.json()).then((결과) => { console.log(결과) } ) JSON -> object/array 변환작업
+이런식으로 json 변환 작업이 필요함
