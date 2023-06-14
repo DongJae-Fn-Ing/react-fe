@@ -46,7 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/BlogPage" element={<BlogPage />} />
-          <Route path="/ShopPage" element={<ShopPage shopData={shopData} />} />
+          <Route path="/ShopPage" element={<ShopPage />} />
           <Route
             path="/ShopPage/shopPageDetail/:id"
             element={<ShopPageDetail shopData={shopData} />}

@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./common/global.css";
 import App from "./App";
+import store from "./store/store";
 /* 경로가 있는 건 내가 만든 자바스크립트 파일 */
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 /* 이런건 라이브러리 */
-import store from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
