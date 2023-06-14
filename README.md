@@ -97,3 +97,5 @@ todoList 만들기
   30.Redux state 함수 셋팅
 
   31.상품 페이지 더보기 진행중
+
+  32.redux axios 통신 구현

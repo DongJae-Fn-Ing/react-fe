@@ -48,8 +48,8 @@ function App() {
           <Route path="/BlogPage" element={<BlogPage />} />
           <Route path="/ShopPage" element={<ShopPage />} />
           <Route
-            path="/ShopPage/shopPageDetail/:id"
-            element={<ShopPageDetail shopData={shopData} />}
+            path="/ShopPage/shopPageDetail/:ids"
+            element={<ShopPageDetail />}
           >
             <Route path="event_one" element={<EventOne />} />
             <Route path="event_two" element={<EventTwo />} />
