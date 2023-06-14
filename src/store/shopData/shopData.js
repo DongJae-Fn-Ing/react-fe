@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import data from "./data";
 
 let shopData = createSlice({
@@ -13,17 +12,8 @@ let shopData = createSlice({
         else return 0;
       });
     },
-    dataAdd(state) {
-      let ad = [];
-      axios
-        .get(`https://codingapple1.github.io/shop/data2.json`)
-        .then((data2) => {
-          ad.push(...data2.data);
-        });
-      /*         .catch(() => {
-          alert("통신 실패");
-        }); */
-      console.log(state);
+    dataAdd(state, axiosData) {
+      state.push(...axiosData.payload.data);
     },
   },
 });

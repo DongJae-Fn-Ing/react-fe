@@ -1,37 +1,40 @@
-import React /* , { useState }  */ from "react";
+import React, { useEffect /* , { useState }  */, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShopHeader from "../../components/shop/shopHeader";
 import Product from "../../components/shop/product";
 import BtnArea from "../../components/common/btnArea";
 import Button from "../../components/common/button/button";
 import Styled from "./styled";
-/* import axios from "axios"; */
+import axios from "axios";
 import { sortItem, dataAdd } from "../../store/shopData/shopData";
+import { countUp } from "../../store/store";
 
 function ShopPage() {
   let shop = useSelector((state) => {
     return state.shopData;
   });
+
+  let count = useSelector((state) => {
+    return state.count;
+  });
+
   let dispatch = useDispatch();
 
+  const [axiosData, setAxiosData] = useState("");
+  const [load, setLoad] = useState(false);
 
-  /*   const [count, setCount] = useState(2);
-  const [load, setLoad] = useState(false); */
-
-  /*   const dataAdd = () => {
-    setLoad(true);
+  useEffect(() => {
     axios
       .get(`https://codingapple1.github.io/shop/data${count}.json`)
       .then((data) => {
-        console.log(data.data);
+        setAxiosData(data);
         setLoad(false);
       })
       .catch(() => {
-        alert("통신 실패");
+        console.log("통신 실패");
         setLoad(false);
       });
-    setCount(count + 1);
-  }; */
+  }, [count]);
 
   return (
     <Styled>
@@ -66,26 +69,24 @@ function ShopPage() {
             );
           })}
         </ul>
-        {/*         {load === true ? <div className="loading">로딩중...</div> : ""} */}
+        {load === true ? <div className="loading">로딩중...</div> : ""}
       </div>
-      {/*       {count > 3 ? (
+      {count === 4 ? (
         ""
       ) : (
         <BtnArea className="center">
-          <Button type="button" className="green" onClick={dataAdd}>
+          <Button
+            type="button"
+            className="green"
+            onClick={() => {
+              dispatch(dataAdd(axiosData));
+              dispatch(countUp());
+            }}
+          >
             더보기
           </Button>
         </BtnArea>
-      )} */}
-      <BtnArea className="center">
-        <Button
-          type="button"
-          className="green"
-          onClick={() => dispatch(dataAdd())}
-        >
-          더보기
-        </Button>
-      </BtnArea>
+      )}
     </Styled>
   );
 }

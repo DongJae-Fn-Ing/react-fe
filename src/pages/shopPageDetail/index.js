@@ -16,10 +16,10 @@ function ShopPageDetail() {
   const [fade, setFade] = useState("");
 
   let goPage = useNavigate();
-  let { id } = useParams();
+  let { ids } = useParams();
   /* 라우터랑 작명 똑같이 해야함 */
 
-  let index = shop.findIndex((obj) => obj.id === Number(id));
+  let index = shop.findIndex((obj) => obj.id === Number(ids));
 
   /*useEffect가 있는 함수는 그 컴포넌트가 장착(마운트)가 되거나
     업데이트가 될 때 useEffect 안에 있는 것들이 작동한다. */
@@ -119,7 +119,7 @@ function ShopPageDetail() {
           className="blue"
           type="button"
           onClick={() => {
-            goPage(`/ShopPage/shopPageDetail/${id}/event_one`);
+            goPage(`/ShopPage/shopPageDetail/${ids}/event_one`);
           }}
         >
           이벤트1
@@ -128,7 +128,7 @@ function ShopPageDetail() {
           className="gray"
           type="button"
           onClick={() => {
-            goPage(`/ShopPage/shopPageDetail/${id}/event_two`);
+            goPage(`/ShopPage/shopPageDetail/${ids}/event_two`);
           }}
         >
           이벤트2
