@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate, Outlet, useParams } from "react-router-dom";
 import Button from "../../components/common/button/button";
 import Styled from "./styled";
 import Data from "./data";
 
-function ShopPageDetail({ shopData }) {
+function ShopPageDetail() {
+  let shop = useSelector((state) => {
+    return state.shopData;
+  });
+
   const [mount, setMount] = useState("");
   const [alertState, SetAlertState] = useState(true);
   const [tabState, setTabState] = useState(0);
@@ -14,8 +19,7 @@ function ShopPageDetail({ shopData }) {
   let { id } = useParams();
   /* 라우터랑 작명 똑같이 해야함 */
 
-  let index = shopData.findIndex((obj) => obj.id === Number(id));
-  /* store로 변환 */
+  let index = shop.findIndex((obj) => obj.id === Number(id));
 
   /*useEffect가 있는 함수는 그 컴포넌트가 장착(마운트)가 되거나
     업데이트가 될 때 useEffect 안에 있는 것들이 작동한다. */
@@ -91,14 +95,14 @@ function ShopPageDetail({ shopData }) {
 
       <div className="deatil-img">
         <img
-          src={`https://codingapple1.github.io/shop/shoes${Number(id) + 1}.jpg`}
-          alt={shopData[index].title}
+          src={`https://codingapple1.github.io/shop/shoes${index + 1}.jpg`}
+          alt={shop[index].title}
         />
       </div>
       <div className="detail-con">
-        <h2 className="detail-tit">{shopData[index].title}</h2>
-        <p className="detail-info">{shopData[index].content}</p>
-        <p className="detail-price">{shopData[index].price}</p>
+        <h2 className="detail-tit">{shop[index].title}</h2>
+        <p className="detail-info">{shop[index].content}</p>
+        <p className="detail-price">{shop[index].price}</p>
         <Button className="green" type="button">
           주문하기
         </Button>

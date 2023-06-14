@@ -287,3 +287,209 @@ fetch('URL').then(결과 => 결과.json()).then((결과) => { console.log(결과
 Redux를 쓰는 이유
 Redux라는 공간에 state들을 저장하여
 모든 컴포넌트에서 쓸 수 있게 한다.
+
+
+Redux 셋팅법
+1. npm install @reduxjs/toolkit react-redux 설치 후
+
+2. store.js 파일 생성후 셋팅
+
+
+import { configureStore } from '@reduxjs/toolkit'
+
+export default configureStore({
+  reducer: { }
+}) 
+
+
+3. 그다음 index.js에서 아래 처럼 셋팅
+
+import { Provider } from "react-redux";
+import store from './store.js'
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+); 
+
+
+4. store.js에서 사용할 state 셋팅
+
+import { configureStore, createSlice } from '@reduxjs/toolkit'
+
+let user = createSlice({
+  name : 'user', // 1.스테이트 이름
+  initialState : 'kim' // 2.스테이트 값
+})
+
+export default configureStore({
+  reducer: {
+    //3. 위에 작성한 거 여기에 등록
+    user : user.reducer,
+    //4. 원하는 컴포넌트 가서 useSelector 사용
+  }
+}) 
+
+
+
+5.원하는 컴포넌트
+
+import React from "react";
+import Styled from "./styled";
+import { useDispatch, useSelector } from "react-redux";
+import { changeName } from "../../store/store";
+
+
+  /* Redux store에 있던 state 남음 */
+  let shopBasket = useSelector((state) => {
+    return state.shopBasket;
+  });
+
+
+   /* 참고사항 useSelector를 편하게 쓰려면 */
+  /*   let store = useSelector((state) => {
+        return state.user;
+      }); */
+  //이런식이면 user만도 가능하다.
+  //여기서 궁금증 그러면 redux쓰면 편하지만 props 왜씀?
+  //셋팅법이랑 코드 정리하기 불편함
+  //+ 스테이트 공유가 필요 없으면 리덕스에 저장 필요 없음
+
+
+
+  6. 리덕스 스테이트 변경법
+  /* -state 수정해주는 함수를 만들고 */
+  /* -원할 때 그 함수를 실행해 달라고 store.js에 요청 */
+
+    //1.state 수정 함수 만들고
+  //2.만든 함수를 export 해야함 밖으로 빼서
+  //3.만든 함수를 import해서 사용함
+
+
+
+export let { changeName } = user.actions;
+  //2.만든 함수를 export 해야함 밖으로 빼서
+
+
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+import ShopBasket from "./storeDate/shopBasket";
+
+let user = createSlice({
+  name: "user", // 스테이트 이름
+  initialState: "kim", // 스테이트 값
+
+  /* 리덕스 스테이트 변경법 */
+  /* -state 수정해주는 함수를 만들고 */
+  /* -원할 때 그 함수를 실행해 달라고 store.js에 요청 */
+
+  reducers: {
+    changeName(state /* 위에 기존 state */) {
+      return "john" + state;
+    },
+  },
+  //1.state 수정 함수 만들고
+  //2.만든 함수를 export 해야함 밖으로 빼서
+  //3.만든 함수를 import해서 사용함
+});
+/* 리덕스에서 스테이트 불러오기 */
+
+export let { changeName } = user.actions;
+  //2.만든 함수를 export 해야함 밖으로 빼서
+
+let stock = createSlice({
+  name: "stock", // 스테이트 이름
+  initialState: [10, 11, 12], // 스테이트 값
+});
+
+let shopBasket = createSlice({
+  name: "shopBasket",
+  initialState: ShopBasket,
+});
+
+export default configureStore({
+  reducer: {
+    //위에 작성한 거 여기에 등록
+    user: user.reducer,
+    //작명하고 이렇게 하고
+    // 원하는 컴포넌트 가서 useSelector 사용
+    stock: stock.reducer,
+    shopBasket: shopBasket.reducer,
+  },
+});
+
+
+
+원하는 컴포넌트 가서
+
+
+import React from "react";
+import Styled from "./styled";
+import { useDispatch, useSelector } from "react-redux";
+import { changeName } from "../../store/store";
+
+function Cart() {
+  /* Redux store에 있던 state 남음 */
+  let shopBasket = useSelector((state) => {
+    return state.shopBasket;
+  });
+  /*   console.log("리덕스 store user:::", store.user);
+  console.log("리덕스 store stock:::", store.stock); */
+
+  /* 참고사항 useSelector를 편하게 쓰려면 */
+  /*   let store = useSelector((state) => {
+        return state.user;
+      }); */
+  //이런식이면 user만도 가능하다.
+  //여기서 궁금증 그러면 redux쓰면 편하지만 props 왜씀?
+  //셋팅법이랑 코드 정리하기 불편함
+  //+ 스테이트 공유가 필요 없으면 리덕스에 저장 필요 없음
+
+  console.log("리덕스 store shopBasket:::", shopBasket);
+
+  let dispatch = useDispatch();
+  //useDispatch는 store.js에 요청해주는 함수
+
+  return (
+    <Styled>
+      <table className="common-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>상품명</th>
+            <th>수량</th>
+            <th>변경하기</th>
+          </tr>
+        </thead>
+        <tbody>
+          {shopBasket.map((data, i) => {
+            return (
+              <tr key={i}>
+                <td>{data.id}</td>
+                <td>{data.name}</td>
+                <td>{data.count}</td>
+                <td>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispatch(changeName());
+                    }}
+                  >
+                    +
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Styled>
+  );
+}
+
+export default Cart;

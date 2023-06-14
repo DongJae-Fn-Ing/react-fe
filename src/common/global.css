@@ -234,6 +234,11 @@ li{
   word-break: break-all;
 }
 
+
+.common-table{ width: 100%; border-top: 2px solid #000;}
+.common-table tr th, .common-table tr td{ padding: 15px; border-bottom: 1px solid #000; }
+.common-table tr th{background-color: #ddd;}
+.common-table tr td{text-align: center;}
 /*-------------------------------------------------------------*/
 
 
