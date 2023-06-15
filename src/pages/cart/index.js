@@ -31,7 +31,7 @@ function Cart() {
                   <button
                     type="button"
                     onClick={() => {
-                      dispatch(countUp(i));
+                      dispatch(countUp(data.id));
                     }}
                   >
                     +

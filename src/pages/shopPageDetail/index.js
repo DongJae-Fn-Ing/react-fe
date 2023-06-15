@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Outlet, useParams } from "react-router-dom";
 import Button from "../../components/common/button/button";
 import Styled from "./styled";
 import Data from "./data";
+import { cartAdd } from "../../store/shopBasket/shopBasket";
 
 function ShopPageDetail() {
   let shop = useSelector((state) => {
     return state.shopData;
   });
+
+  let dispatch = useDispatch();
 
   const [mount, setMount] = useState("");
   const [alertState, SetAlertState] = useState(true);
@@ -103,7 +106,13 @@ function ShopPageDetail() {
         <h2 className="detail-tit">{shop[index].title}</h2>
         <p className="detail-info">{shop[index].content}</p>
         <p className="detail-price">{shop[index].price}</p>
-        <Button className="green" type="button">
+        <Button
+          className="green"
+          type="button"
+          onClick={() => {
+            dispatch(cartAdd(shop[index]));
+          }}
+        >
           주문하기
         </Button>
         <Button
