@@ -1,7 +1,7 @@
 import React from "react";
 import Styled from "./styled";
 import { useDispatch, useSelector } from "react-redux";
-import { countUp } from "../../store/shopBasket/shopBasket";
+import { countUp, cartDel } from "../../store/shopBasket/shopBasket";
 
 function Cart() {
   let stateData = useSelector((state) => {
@@ -18,6 +18,7 @@ function Cart() {
             <th>상품명</th>
             <th>수량</th>
             <th>변경하기</th>
+            <th>삭제하기</th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +36,16 @@ function Cart() {
                     }}
                   >
                     +
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispatch(cartDel(data.id));
+                    }}
+                  >
+                    delete
                   </button>
                 </td>
               </tr>

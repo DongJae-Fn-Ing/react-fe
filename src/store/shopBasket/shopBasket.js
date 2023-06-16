@@ -15,14 +15,21 @@ let shopBasket = createSlice({
         name: add.payload.title,
         count: 1,
       };
-      state.push(obj);
-
-      //장바구니 삭제기능 추가고민
-      //장바구니 중복값 추가하면 수치 증가
+      let index = state.findIndex((test) => test.id === obj.id);
+      if (index === obj.id) {
+        alert("이미 있으므로 수량증가");
+        state[obj.id].count++;
+      } else {
+        state.push(obj);
+      }
+    },
+    cartDel(state, i) {
+      let index = state.findIndex((obj) => obj.id === i.payload);
+      state.splice(index, 1);
     },
   },
 });
 
-export let { countUp, cartAdd } = shopBasket.actions;
+export let { countUp, cartAdd, cartDel } = shopBasket.actions;
 
 export default shopBasket;
