@@ -10,8 +10,6 @@ import EventOne from "./components/shop/event/eventOne";
 import EventTwo from "./components/shop/event/eventTwo";
 import Styled from "./styled";
 
-import shopData from "./pages/shopPage/data";
-
 function App() {
   let navigate = useNavigate();
   /* 페이지 이동 */

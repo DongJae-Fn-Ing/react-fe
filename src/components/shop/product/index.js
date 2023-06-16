@@ -2,13 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Styled from "./styled";
 
-function Product({ img, title, content, price, subKey }) {
+function Product({ img, title, content, price, subKey, localData }) {
   let detailPageGo = useNavigate();
+/*   const localPush = (i) => localData(i); */
 
   return (
     <Styled
       onClick={() => {
         detailPageGo("/ShopPage/shopPageDetail/" + [subKey]);
+/*         localPush(subKey); */
       }}
     >
       <figure>

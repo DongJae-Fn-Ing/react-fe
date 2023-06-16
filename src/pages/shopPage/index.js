@@ -2,6 +2,7 @@ import React, { useEffect /* , { useState }  */, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShopHeader from "../../components/shop/shopHeader";
 import Product from "../../components/shop/product";
+/* import Recently from "../../components/shop/recently"; */
 import BtnArea from "../../components/common/btnArea";
 import Button from "../../components/common/button/button";
 import Styled from "./styled";
@@ -22,7 +23,7 @@ function ShopPage() {
 
   const [axiosData, setAxiosData] = useState("");
   const [load, setLoad] = useState(false);
-
+/*   const [local, setlocal] = useState("") */;
   useEffect(() => {
     axios
       .get(`https://codingapple1.github.io/shop/data${count}.json`)
@@ -35,6 +36,33 @@ function ShopPage() {
         setLoad(false);
       });
   }, [count]);
+
+  /* 로컬스토리지 */
+  /* let obj = { name: "kim" }; */
+  /*   JSON.stringify(obj); */
+  /* 자바스크립트 제이슨 변환 함수 */
+  //localStorage.setItem("data", JSON.stringify(obj));
+  //let open = localStorage.getItem("data");
+  /* JSON.parse(open); */
+  /* 꺼낸 json 파일 다시 obj변환 */
+  /*   console.log("json:::", JSON.parse(open)); */
+
+/*   useEffect(() => {
+    localStorage.setItem("new", JSON.stringify([]));
+    let localOpen = localStorage.getItem("new");
+    let openData = JSON.parse(localOpen);
+    openData.push(local);
+    localStorage.setItem("new", JSON.stringify(openData));
+  }, [local]); */
+
+  //const localData = (data) => {
+    //setlocal(data);
+    /*     console.log("테스트:::", local); */
+    /*     let localOpen = localStorage.getItem("new");
+    let openData = JSON.parse(localOpen);
+    openData.push(data);
+    localStorage.setItem("new", JSON.stringify(openData)); */
+  //};
 
   return (
     <Styled>
@@ -65,6 +93,7 @@ function ShopPage() {
                 title={data.title}
                 content={data.content}
                 price={data.price}
+/*                 localData={localData} */
               />
             );
           })}
@@ -87,6 +116,7 @@ function ShopPage() {
           </Button>
         </BtnArea>
       )}
+{/*       <Recently /> */}
     </Styled>
   );
 }
