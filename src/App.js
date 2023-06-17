@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Main from "./pages/main";
 import BlogPage from "./pages/blogPage";
@@ -14,6 +14,10 @@ function App() {
   let navigate = useNavigate();
   /* 페이지 이동 */
   /* 보통 함수를 담아서 사용 */
+
+  useEffect(() => {
+    localStorage.setItem("new", JSON.stringify([]));
+  }, []);
 
   return (
     <div className="App">
