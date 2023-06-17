@@ -23,8 +23,7 @@ function ShopPage() {
 
   const [axiosData, setAxiosData] = useState("");
   const [load, setLoad] = useState(false);
-/*   const [local, setlocal] = useState("") */;
-  useEffect(() => {
+  /*   const [local, setlocal] = useState("") */ useEffect(() => {
     axios
       .get(`https://codingapple1.github.io/shop/data${count}.json`)
       .then((data) => {
@@ -47,22 +46,15 @@ function ShopPage() {
   /* 꺼낸 json 파일 다시 obj변환 */
   /*   console.log("json:::", JSON.parse(open)); */
 
-/*   useEffect(() => {
-    localStorage.setItem("new", JSON.stringify([]));
+
+  const localData = (data) => {
     let localOpen = localStorage.getItem("new");
     let openData = JSON.parse(localOpen);
-    openData.push(local);
-    localStorage.setItem("new", JSON.stringify(openData));
-  }, [local]); */
-
-  //const localData = (data) => {
-    //setlocal(data);
-    /*     console.log("테스트:::", local); */
-    /*     let localOpen = localStorage.getItem("new");
-    let openData = JSON.parse(localOpen);
     openData.push(data);
-    localStorage.setItem("new", JSON.stringify(openData)); */
-  //};
+    let result = openData.filter((v, i) => openData.indexOf(v) === i);
+    console.log(result);
+    localStorage.setItem("new", JSON.stringify(result));
+  };
 
   return (
     <Styled>
@@ -93,7 +85,7 @@ function ShopPage() {
                 title={data.title}
                 content={data.content}
                 price={data.price}
-/*                 localData={localData} */
+                localData={localData}
               />
             );
           })}
@@ -116,7 +108,7 @@ function ShopPage() {
           </Button>
         </BtnArea>
       )}
-{/*       <Recently /> */}
+      {/*       <Recently /> */}
     </Styled>
   );
 }

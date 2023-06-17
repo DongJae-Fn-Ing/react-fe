@@ -4,13 +4,13 @@ import Styled from "./styled";
 
 function Product({ img, title, content, price, subKey, localData }) {
   let detailPageGo = useNavigate();
-/*   const localPush = (i) => localData(i); */
+  const localPush = (i) => localData(i);
 
   return (
     <Styled
       onClick={() => {
         detailPageGo("/ShopPage/shopPageDetail/" + [subKey]);
-/*         localPush(subKey); */
+        localPush(subKey);
       }}
     >
       <figure>
