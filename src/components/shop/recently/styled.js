@@ -15,6 +15,11 @@ const Styled = styled.div`
   .recently-title {
     text-align: center;
   }
+
+  .list {
+    overflow: auto;
+    max-height: 100px;
+  }
 `;
 
 export default Styled;
