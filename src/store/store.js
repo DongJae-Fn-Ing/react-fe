@@ -13,12 +13,29 @@ let count = createSlice({
   },
 });
 
+let productData = createSlice({
+  name: "productData",
+  initialState: [],
+
+  reducers: {
+    productDataPush(state, i) {
+      if (state.includes(i.payload)) {
+        console.log("중복값");
+      } else {
+        state.push(i.payload);
+      }
+    },
+  },
+});
+
 export let { countUp } = count.actions;
+export let { productDataPush } = productData.actions;
 
 export default configureStore({
   reducer: {
     shopData: shopData.reducer,
     shopBasket: shopBasket.reducer,
     count: count.reducer,
+    productData: productData.reducer,
   },
 });

@@ -1,8 +1,7 @@
-import React, { useEffect /* , { useState }  */, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ShopHeader from "../../components/shop/shopHeader";
 import Product from "../../components/shop/product";
-/* import Recently from "../../components/shop/recently"; */
 import BtnArea from "../../components/common/btnArea";
 import Button from "../../components/common/button/button";
 import Styled from "./styled";
@@ -19,11 +18,13 @@ function ShopPage() {
     return state.count;
   });
 
+
   let dispatch = useDispatch();
 
   const [axiosData, setAxiosData] = useState("");
   const [load, setLoad] = useState(false);
-  /*   const [local, setlocal] = useState("") */ useEffect(() => {
+
+  useEffect(() => {
     axios
       .get(`https://codingapple1.github.io/shop/data${count}.json`)
       .then((data) => {
@@ -46,13 +47,11 @@ function ShopPage() {
   /* 꺼낸 json 파일 다시 obj변환 */
   /*   console.log("json:::", JSON.parse(open)); */
 
-
   const localData = (data) => {
     let localOpen = localStorage.getItem("new");
     let openData = JSON.parse(localOpen);
     openData.push(data);
     let result = openData.filter((v, i) => openData.indexOf(v) === i);
-    console.log(result);
     localStorage.setItem("new", JSON.stringify(result));
   };
 
@@ -108,7 +107,6 @@ function ShopPage() {
           </Button>
         </BtnArea>
       )}
-      {/*       <Recently /> */}
     </Styled>
   );
 }

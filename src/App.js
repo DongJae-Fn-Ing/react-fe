@@ -8,6 +8,7 @@ import Cart from "./pages/cart";
 import ErrorPage from "./pages/errorPage";
 import EventOne from "./components/shop/event/eventOne";
 import EventTwo from "./components/shop/event/eventTwo";
+import Recently from "../src/components/shop/recently";
 import Styled from "./styled";
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
           {/* 이친구는 페이지 */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Recently />
       </Styled>
     </div>
   );

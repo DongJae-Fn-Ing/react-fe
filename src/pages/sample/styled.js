@@ -6,6 +6,7 @@ const Styled = styled.div`
   .cart-table {
     width: 80%;
     margin: 0 auto;
+
     thead,
     tbody {
       tr {
