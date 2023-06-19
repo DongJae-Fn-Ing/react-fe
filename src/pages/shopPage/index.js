@@ -18,7 +18,6 @@ function ShopPage() {
     return state.count;
   });
 
-
   let dispatch = useDispatch();
 
   const [axiosData, setAxiosData] = useState("");
@@ -47,11 +46,22 @@ function ShopPage() {
   /* 꺼낸 json 파일 다시 obj변환 */
   /*   console.log("json:::", JSON.parse(open)); */
 
-  const localData = (data) => {
+  const localData = (data, title) => {
     let localOpen = localStorage.getItem("new");
     let openData = JSON.parse(localOpen);
-    openData.push(data);
-    let result = openData.filter((v, i) => openData.indexOf(v) === i);
+    let obj = {
+      id: data,
+      title: title,
+    };
+    console.log(obj.id);
+    openData.push(obj);
+    let result = openData.filter((item, i) => {
+      return (
+        openData.findIndex((item2) => {
+          return item.id === item2.id;
+        }) === i
+      );
+    });
     localStorage.setItem("new", JSON.stringify(result));
   };
 

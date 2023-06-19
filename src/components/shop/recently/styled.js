@@ -17,8 +17,30 @@ const Styled = styled.div`
   }
 
   .list {
-    overflow: auto;
-    max-height: 100px;
+    overflow-y: auto;
+    height: 160px;
+    max-height: 160px;
+    .list-item {
+      figure {
+        width: 100%;
+        .list-img {
+          display: block;
+          width: 50px;
+          height: 50px;
+          margin: 0 auto;
+        }
+        figcaption {
+          p {
+            font-size: 10px;
+            text-align: center;
+          }
+        }
+      }
+
+      &:not(:last-child){
+        margin-bottom: 5px;
+      }
+    }
   }
 `;
 

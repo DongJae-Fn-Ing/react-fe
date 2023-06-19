@@ -1,20 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { productDataPush } from "../../../store/store";
 import Styled from "./styled";
 
 function Product({ img, title, content, price, subKey, localData }) {
   let detailPageGo = useNavigate();
-  const localPush = (i) => localData(i);
-  let dispatch = useDispatch();
+  const localPush = (i, j) => localData(i, j);
 
   return (
     <Styled
       onClick={() => {
         detailPageGo("/ShopPage/shopPageDetail/" + [subKey]);
-        localPush(subKey);
-        dispatch(productDataPush(subKey));
+        localPush(subKey, title);
       }}
     >
       <figure>
