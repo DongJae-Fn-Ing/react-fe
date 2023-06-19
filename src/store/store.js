@@ -18,13 +18,6 @@ let productData = createSlice({
   initialState: [],
 
   reducers: {
-    productDataPush(state, i) {
-      if (state.includes(i.payload)) {
-        console.log("중복값");
-      } else {
-        state.push(i.payload);
-      }
-    },
   },
 });
 
