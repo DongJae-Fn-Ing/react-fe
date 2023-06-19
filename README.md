@@ -121,3 +121,7 @@ todoList 만들기
   37.로컬 스토리지 데이터 코드 교체 및 최근 본 상품 최종 완성
 
   38.react query 완료
+
+- 2023.06.20
+
+  39.lazy import, Suspense 
