@@ -581,3 +581,38 @@ npm install react-query
 
   // 그냥 실시간으로 데이터 뿌려지는 곳에 사용하면 좋다
   // redux-toolkit 설치를 했으면 RTK Query도 자동설치됩니다. 이거 리액트 쿼리랑 비슷하지만 문법 더러움
+
+
+
+
+  single page application 특징
+  npm run 등으로 발행을 하면 하나의 js 파일에 모든 코드를 다 쑤셔 넣음
+  이러면 파일을 커서 로딩 속도가 느림
+
+
+
+  (App.js)
+import {lazy, Suspense, useEffect, useState} from 'react'
+
+const Detail = lazy( () => import('./routes/Detail.js') )
+const Cart = lazy( () => import('./routes/Cart.js') )
+
+미리 로드 될 필요 없는 컴포넌트 들을 이런식으로 느리게 임포트 해서 속도를 빠르게 향상한다.
+위처럼 하면 lazy 파일들은 별도의 js 파일로 분리가 됩니다.
+
+단점은 lazy 처리한 컴포넌트로 접속을 해야할 때 늦어지는 속도가 발생을 한다.
+
+그럴 경우
+
+<Suspense fallback={ <div>로딩중임</div> }>
+  <Detail shoes={shoes} />
+</Suspense>
+
+Suspense를 상단으로 추가하고 fallback 속성으로 ui를 넣을 수 있다.
+lazy 사용하면 당연히 Detail 컴포넌트 로드까지 지연시간이 발생할 수 있습니다. 그럴 땐
+1. Suspense 라는거 import 해오고
+2. Detail 컴포넌트를 감싸면
+Detail 컴포넌트가 로딩중일 때 대신 보여줄 html 작성도 가능합니다. 
+ 
+
+귀찮으면 <Suspense> 이걸로 <Routes> 전부 감싸도 됩니다. 
