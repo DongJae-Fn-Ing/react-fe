@@ -94,7 +94,6 @@ function BlogPage() {
       textAddCopy.push(text);
       textGoodCopy.push(0);
       textDateCopy.push(time);
-      console.log("테스트:::", time);
       setTitle(textAddCopy);
       setGood(textGoodCopy);
       setDate(textDateCopy);
