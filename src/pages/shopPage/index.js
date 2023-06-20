@@ -9,6 +9,9 @@ import axios from "axios";
 import { sortItem, dataAdd } from "../../store/shopData/shopData";
 import { countUp } from "../../store/store";
 
+
+//memo , useMemo
+
 function ShopPage() {
   let shop = useSelector((state) => {
     return state.shopData;
@@ -53,7 +56,6 @@ function ShopPage() {
       id: data,
       title: title,
     };
-    console.log(obj.id);
     openData.push(obj);
     let result = openData.filter((item, i) => {
       return (
