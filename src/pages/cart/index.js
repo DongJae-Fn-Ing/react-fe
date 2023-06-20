@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { countUp, cartDel } from "../../store/shopBasket/shopBasket";
 
 let Child = memo(function () {
-  console.log("재랜더링 테스트");
   return <div>자식 컴포넌트</div>;
 });
 
@@ -15,10 +14,10 @@ let Child = memo(function () {
 function Cart() {
   /* let result = 함수(); */
   // 이러면 문제 cart가 재랜더링 될 때마다 반복문 돌음 이거를 개선하고 싶으면
-/*   useMemo(() => {
+  /*   useMemo(() => {
     return 함수();
   },[]); */
-  //이러면 cart 랜더링될 때 한번만 결과를 리턴함 
+  //이러면 cart 랜더링될 때 한번만 결과를 리턴함
   // useEffetc랑 똑같이 디펜더시 넣을 수 있음 []안에 스테이트 넣으면 스테이트 바뀔 때만 작동
 
   let stateData = useSelector((state) => {
