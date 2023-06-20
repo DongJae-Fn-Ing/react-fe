@@ -125,3 +125,7 @@ todoList 만들기
 - 2023.06.20
 
   39.lazy import, Suspense 
+
+  40.memo, useMemo
+
+  41.automatic batching, useTransition, useDeferredValue

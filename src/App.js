@@ -4,6 +4,7 @@ import Main from "./pages/main";
 import BlogPage from "./pages/blogPage";
 import ShopPage from "./pages/shopPage";
 import ShopPageDetail from "./pages/shopPageDetail";
+import InputPage from "./pages/inputPage";
 import Cart from "./pages/cart";
 import ErrorPage from "./pages/errorPage";
 import EventOne from "./components/shop/event/eventOne";
@@ -66,6 +67,9 @@ function App() {
               <Link to="/cart">장바구니</Link>
             </li>
             <li>
+              <Link to="/input">인풋</Link>
+            </li>
+            <li>
               <button
                 type="button"
                 onClick={() => navigate("/ShopPage/shopPageDetail")}
@@ -92,6 +96,7 @@ function App() {
             <Outlet></Outlet> 보여줄 자리에 이거 임포트해서 해당 태그 추가 slot 이라 생각하면 편함*/}
           </Route>
           <Route path="/cart" element={<Cart />} />
+          <Route path="/input" element={<InputPage />} />
           {/* 이친구는 페이지 */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
