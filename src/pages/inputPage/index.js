@@ -2,8 +2,8 @@ import React, { useState, useTransition, useDeferredValue } from "react";
 import Input from "../../components/common/input/input";
 import Styled from "./styled";
 
-let a = new Array(10000).fill(0);
-
+/* let a = new Array(10000).fill(0);
+ */
 function InputPage() {
   let [name, setName] = useState("");
   let [isPending, startTransition] = useTransition();
@@ -12,8 +12,30 @@ function InputPage() {
   /* let 변수명 = useDeferredValue(여기에 스테이트) */
   // useDeferredValue 안에 들어간 state는 늦게 처리하고 그값을 변수명에 넣어줌
   //useTransition이랑 같음
+
+  let [count, setCount] = useState(0);
+  let [age, setAge] = useState(20);
+
+  const aaa = () => {
+    console.log("count:::", count);
+    if (count === 3) {
+      setCount(count);
+      setAge(age);
+    } else {
+      setCount(count++);
+      setAge(age++);
+    }
+  };
+
   return (
     <Styled>
+      <div>
+        <div>안녕하십니까 전 {age}</div>
+        <button type="button" onClick={aaa}>
+          누르면한살먹기
+        </button>
+      </div>
+
       <Input
         onChange={(e) => {
           startTransition(() => {
@@ -32,11 +54,11 @@ function InputPage() {
         }}
       />
       {/* 만약에 아래처럼 성능 저하가 일어나면? useTransition를 써라 */}
-      {isPending
+      {/*       {isPending
         ? "로딩중..."
         : a.map((x, y) => {
             return <div key={y}>{name}</div>;
-          })}
+          })} */}
     </Styled>
   );
 }
