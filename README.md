@@ -129,3 +129,5 @@ todoList 만들기
   40.memo, useMemo
 
   41.automatic batching, useTransition, useDeferredValue
+
+  42. PWA 셋팅해서 앱으로 발행하기 학습해야함
